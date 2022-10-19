@@ -5,7 +5,7 @@
 
 ```bash
 bash$ sudo apt-get install qemu-system-x86 qemu-kvm gcc-multilib make git
-bash$ git clone https://github.com/sduverger/secos
+bash$ git clone https://github.com/agantet/secos
 ```
 
 ## Organisation du cours:
