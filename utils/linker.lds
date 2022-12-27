@@ -13,7 +13,7 @@ PHDRS
 
 SECTIONS
 {
-   /* On descend le kernel à l'adresse la plus basse 0X300000 => 0x100000 */
+   /* On descend le kernel à l'adresse la plus basse non réservée : 0x100000 */
    . = 0x100000;
    .mbh      : { KEEP(*(.mbh)) . = ALIGN(4);     } : phboot
    .stack    : { KEEP(*(.stack))                 } : phstack
@@ -28,7 +28,7 @@ SECTIONS
    /DISCARD/ : { *(.note* .indent .comment)      } : phsetup
 
    . = 0x400000;
-   __kernel_end__ = .; /*0x1054e0*/
+   __kernel_end__ = .; 
 
    /* Zone mémoire tâche 1 */
    __user1_begin__ = .;
@@ -46,4 +46,7 @@ SECTIONS
    /* Page pour la mémoire partagée entre les deux tâches */
    . = 0x800000;
    __shared_task_mem_begin__ = .;
+   . = 0x801000;
+   __shared_task_mem_end__ = .;
+
 }
